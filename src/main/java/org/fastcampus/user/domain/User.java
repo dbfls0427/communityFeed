@@ -13,18 +13,34 @@ public class User {
 
   private final PositiveIntegerCounter followerCount;
 
+
   public Long getId() {
     return id;
   }
 
+  public UserInfo getInfo() {
+    return info;
+  }
+
+  public int followingCount() {
+    return followingCount.getCount();
+  }
+
+  public int followerCount() {
+    return followerCount.getCount();
+  }
+
   public User(Long id, UserInfo info, PositiveIntegerCounter followingCount,
       PositiveIntegerCounter followerCount) {
+    if(info == null) {
+      throw new IllegalArgumentException();
+    }
+
     this.id = id;
     this.info = info;
     this.followingCount = followingCount;
     this.followerCount = followerCount;
   }
-
   public void follow(User targetUser) {
     if(targetUser.equals(this)) {
       throw new IllegalArgumentException();
