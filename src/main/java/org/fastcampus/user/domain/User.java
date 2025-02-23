@@ -13,6 +13,12 @@ public class User {
 
   private final PositiveIntegerCounter followerCount;
 
+  public User(Long id, UserInfo info) {
+    this.id = id;
+    this.info = info;
+  }
+
+
 
   public Long getId() {
     return id;
